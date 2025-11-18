@@ -1,0 +1,107 @@
+Notas de Aula 17/11/2025 - Revisão do 2º B
+
+1º Stateful e Stateless
+
+	A diferença entre Stateful e Stateless é que uma vai guardar o estado dos objetos(Stateful) e o outro vai reconhecer cada requisição como uma requisição nova(Stateless).
+
+	Stateless: nenhum registro de todas as interações anteriores são salvos.
+	Cada interação é tratada com base nas informações disponíveis para a interação
+
+	Exemplo: Protocolos de Internet (IP), Protocolo de transmissão Hyper Text.
+	Vantagens:
+		* Redução o uso de memória no servidor.
+		* Reduz problemas de sessão expirada
+	Desvantagens:
+		* Mais difícil de manter a interação do usuário e criar uma aplicação web sem emenda
+		* Pode exigir informações extras a serem enviados para o servidor em relação ao cliente
+
+	Statefull: O Oposto do Stateless
+	Mantém o controle do estado de interação
+	Permite que os dados a ser mantido entre diferentes requisições.
+	Exemplo: Java:HttpSession, APS.net: Session
+
+	Vantagens:
+		* Manter o controle de um usuário durante toda a execução da aplicação.
+		* Mais intuitivo, dados de entidade podem ser mantidas no servidor entre requisições
+		* Pode melhorar o desempenho quando a recuperação de dados é necessária apenas uma vez.
+	Desvantagens:
+		* Requer memória a ser alocada para armazenar os dados
+		* Podem levar a uma diminuição do desempenho se o armazenamento de sessão não é mantido de forma eficiente
+
+2º Flutter e Dart
+
+	Dart é a linguagem do Flutter e o ponto de partida para os seus estudos. É possível aprender Flutter e ao longo do caminho ir adquirindo familiaridade com o Dart, principalmente se você conhece JavaScript, dada a proximidade da sintaxe dessas duas linguagens.
+	
+	Flutter é um Framework OpenSource mobile para desenvolvimento de aplicações Android e IOS de alta performance.
+	* Linguagem de programação Dart
+	* Flutter Engine
+	* Biblioteca Foundation
+	* Design-specific Widgets com implementações prontas para Android (Google Material) e iOS (Cupertino)
+
+3º Android, aplicações Mobile
+
+	Aplicação Android:
+	* É um processo Linux
+	* Possui sua própria instância da máquina virtual Dalvik
+	* Executa arquivos .dex (ferramenta dx)
+	
+	Existem 4 tipos básicos de elementos:
+		Activities
+		Intents e IntentFilters (e BroadcastReceivers)
+		Services
+		Content Providers
+
+	Nem toda aplicação precisa ter todos os tipos, mas terá alguma combinação destes.
+
+	Os componentes que compõem a aplicação são declarados no arquivo AndroidManifest.xml.
+	
+	* AndroidManifest.xml é necessário para cada aplicação.
+
+		Descreve os elementos da aplicação: (Activities, Content Providers, Services e Intent Receivers) globalmente visíveis, as classes de implementação de cada componente, e qual tipo de dado este pode tratar, quando pode ser ativado, etc.
+
+		Pode-se também descrever as permissões e parâmetros de instrumentação
+	
+	* Activity
+	
+	É uma tela de sua aplicação; cada uma é uma especialização da classe base Activity.
+ 
+	Sua classe será composta de views que respondem a eventos; uma atividade pode retornar um valor para outra atividade;
+	
+	* BroadcastReceiver
+	
+	Deve ser usado quando a aplicação deve reagir a eventos externos à aplicação (e.g. ligação telefônica, timer, rede wifi disponível, etc.)
+
+	BroadcastReceivers são definidos no AndroidManifest.xml, ou são registrados usando método Context.registerReceiver().
+
+	A aplicação não precisa estar executando; o sistema vai inicia-la quando o BroadcastReceiver é disparado
+
+	Aplicações também podem enviar seus IntentBroadcasts para outras aplicações.
+	
+	* Services
+	
+	Uma thread (processo) executando em background, independentemente de uma Interface do usuário (p.ex. tocar músicas de uma playlist)
+
+	Activities (para escolha do álbum) podem se conectar a um serviço usando  Context.bindService() para iniciá-lo se já não executa) .Uma vez conectado, pode-se interagir com ele através da interface exportada pelo mesmo (Exemplo: “pause”).
+	
+	* ContentProvider
+	
+	Uma classe usada para que aplicações compartilhem dados entre sí ; implementa um conjunto de métodos padrão para armazenar e recuperar dados de um determinado tipo;
+
+	Observação: aplicações também podem interagir através de um banco de dados SQL ou de arquivos
+	
+	* Em Sintese
+	
+	View
+		São elementos de interface que formam um bloco básico de construção de uma interface de usuário;
+	Activity
+		É representada por uma tela simples na aplicação e contém uma ou mais visões;
+	Intent
+		Intenção do que será feito, tratador de ações;
+	Content Provider
+		Compartilhamento de dados sobre aplicações móveis em um dispositivo comum; Envolve a disposição de dados armazenados em bases (sejam bancos como o SQLite ou file de persistência primitiva)
+	Service
+		Processo de background que podem rodar por longo tempo;
+	Android Manifest.xml
+		Similar ao arquivo web.xml do mundo J2EE, o qual define o conteúdo e características da aplicação;
+	Android Virtual Devices
+		Permite o desenvolvedor testar suas aplicações sem um equipamento com Android;
